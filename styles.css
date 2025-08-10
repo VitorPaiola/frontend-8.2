@@ -1,0 +1,676 @@
+/* ==========================================
+   1. Estilos Globais e Variáveis de Tema
+   ========================================== */
+:root {
+    /* Paleta de Cores do Tema Claro (Padrão) */
+    --background-color: #F8F8F8;
+    --text-color: #212121;
+    --primary-color: #8C2F39; /* Cor de destaque, como um vermelho vinho */
+    --secondary-color: #4A4A4A;
+    --card-background: #FFFFFF;
+    --card-hover-shadow: rgba(0, 0, 0, 0.1);
+    --border-color: #E0E0E0;
+    --input-background: #FFFFFF;
+    --input-border: #CCCCCC;
+    --toast-background: #4CAF50;
+    --toast-text: #FFFFFF;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --error-color: #E53935; /* Cor para mensagens de erro */
+
+    /* Fontes do Projeto */
+    --font-heading: 'Zen Kaku Gothic New', sans-serif;
+    --font-body: 'Noto Sans JP', sans-serif;
+}
+
+[data-theme="dark"] {
+    /* Paleta de Cores do Tema Escuro */
+    --background-color: #121212;
+    --text-color: #E0E0E0;
+    --primary-color: #CD5C5C; /* Tom de vermelho mais claro */
+    --secondary-color: #BDBDBD;
+    --card-background: #1E1E1E;
+    --card-hover-shadow: rgba(255, 255, 255, 0.1);
+    --border-color: #333333;
+    --input-background: #1E1E1E;
+    --input-border: #444444;
+    --toast-background: #388E3C;
+    --toast-text: #FFFFFF;
+    --box-shadow-color: rgba(255, 255, 255, 0.05);
+    --error-color: #EF5350; /* Cor para mensagens de erro no tema escuro */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding-top: 90px; /* Adicionado para evitar que o conteúdo fique atrás do header fixo */
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.carousel-title {
+    font-size: 2rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+section {
+    padding: 5rem 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+
+/* ==========================================
+   2. Header e Navegação
+   ========================================== */
+.header {
+    background-color: var(--background-color);
+    position: fixed; /* Alterado para fixed */
+    top: 0;
+    width: 100%; /* Garantido que ocupe a largura total */
+    z-index: 1000;
+    box-shadow: 0 2px 10px var(--box-shadow-color);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.logo a {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: var(--text-color);
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-list a {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.icon-btn, .lang-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.lang-toggle-btn {
+    font-family: var(--font-body);
+    font-weight: 700;
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+
+/* ==========================================
+   3. Hero Section
+   ========================================== */
+.hero-section {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    background-image: url('./images/hero-sushi.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.cta-btn {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #A33F49;
+}
+
+
+/* ==========================================
+   4. Seção de Cardápio
+   ========================================== */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-item {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--box-shadow-color);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--card-hover-shadow);
+}
+
+.menu-item-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.menu-item-content {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.menu-item-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu-item-description {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.menu-item-price {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+
+/* ==========================================
+   5. Modal de Detalhes do Prato
+   ========================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 25px var(--box-shadow-color);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal.visible .modal-content {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.modal-text h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.modal-text p {
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+
+/* ==========================================
+   6. Seção de Especiais (Carrossel)
+   ========================================== */
+.carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-items {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    flex: 0 0 calc(100% / 3);
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.carousel-item img {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+
+/* ==========================================
+   7. Seção de Contato
+   ========================================== */
+.contact-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-form label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.8rem;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
+    resize: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 1rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: #A33F49;
+}
+
+
+/* ==========================================
+   8. Rodapé
+   ========================================== */
+.footer {
+    background-color: var(--card-background);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer-text {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efeito Hover com cores das plataformas */
+.social-link-linkedin:hover i {
+    color: #0077B5;
+    transform: scale(1.2);
+}
+
+.social-link-github:hover i {
+    color: #181717;
+    transform: scale(1.2);
+}
+
+.social-link-youtube:hover i {
+    color: #FF0000;
+    transform: scale(1.2);
+}
+
+.social-link-twitter:hover i {
+    color: #1DA1F2;
+    transform: scale(1.2);
+}
+
+.social-link-insta:hover i {
+    color: #bc1888;
+    transform: scale(1.2);
+}
+
+.social-link-dev:hover i {
+    color: #0A0A0A;
+    transform: scale(1.2);
+}
+
+
+/* ==========================================
+   9. Botão de Scroll ao Topo
+   ========================================== */
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px var(--box-shadow-color);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.scroll-to-top-btn.show {
+    opacity: 1;
+}
+
+.scroll-to-top-btn.hidden {
+    display: none;
+}
+
+
+/* ==========================================
+   10. Notificação Toast
+   ========================================== */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--toast-background);
+    color: var(--toast-text);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 3000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+
+/* ==========================================
+   11. Media Queries (Responsividade)
+   ========================================== */
+@media (max-width: 1024px) {
+    .carousel-item {
+        flex: 0 0 calc(100% / 2);
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .nav-list {
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .carousel-title {
+        font-size: 1.5rem;
+    }
+
+    .carousel-item {
+        flex: 0 0 100%;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .modal-image {
+        height: 250px;
+    }
+
+    .carousel-btn {
+        padding: 0.75rem;
+    }
+
+    .contact-section {
+        padding: 3rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content {
+        padding: 1rem;
+    }
+
+    .nav-list {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .cta-btn {
+        padding: 0.8rem 2rem;
+    }
+}

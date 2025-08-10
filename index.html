@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura: Culinária Japonesa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header" id="home">
+        <div class="header-content">
+            <h1 class="logo"><a href="#home">Sakura</a></h1>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#menu" data-i18n="menu">Cardápio</a></li>
+                    <li><a href="#specials" data-i18n="specials">Especiais</a></li>
+                    <li><a href="#contact" data-i18n="contact">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn">
+                    <span class="sun hidden"><i class="fas fa-sun"></i></span>
+                    <span class="moon"><i class="fas fa-moon"></i></span>
+                </button>
+                <button id="language-toggle" class="lang-toggle-btn">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2 class="hero-title" data-i18n="slogan">A Essência do Japão em Cada Sabor</h2>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">Uma jornada gastronômica autêntica e inesquecível.</p>
+                <a href="#menu" class="cta-btn" data-i18n="exploreMenu">Explorar o Cardápio</a>
+            </div>
+        </section>
+
+        <section class="menu-section" id="menu">
+            <h2 class="section-title" data-i18n="ourMenu">Nosso Cardápio</h2>
+            <div class="menu-grid">
+            </div>
+        </section>
+
+        <div id="dish-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn"><i class="fas fa-times"></i></span>
+                <img id="modal-image" src="" alt="" class="modal-image">
+                <div class="modal-text">
+                    <h3 id="modal-title"></h3>
+                    <p id="modal-description"></p>
+                    <p id="modal-ingredients"></p>
+                </div>
+            </div>
+        </div>
+
+        <section class="specials-section" id="specials">
+            <h2 class="section-title carousel-title" data-i18n="houseSpecials">Especiais da Casa</h2>
+            <div class="carousel-container">
+                <div class="carousel-items" id="carousel-items"></div>
+                <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <h2 class="section-title" data-i18n="makeReservation">Faça sua Reserva</h2>
+            <form id="contact-form" class="contact-form">
+                <label for="name" data-i18n="name">Nome:</label>
+                <input type="text" id="name" name="name">
+                <span id="name-error" class="error-message"></span>
+
+                <label for="email" data-i18n="email">E-mail:</label>
+                <input type="text" id="email" name="email">
+                <span id="email-error" class="error-message"></span>
+
+                <label for="message" data-i18n="message">Mensagem:</label>
+                <textarea id="message" name="message" rows="5"></textarea>
+                <span id="message-error" class="error-message"></span>
+
+                <button type="submit" class="submit-btn" data-i18n="send">Enviar</button>
+            </form>
+        </section>
+
+        <button id="scroll-to-top-btn" class="scroll-to-top-btn"><i class="fas fa-arrow-up"></i></button>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text" data-i18n="footerText">&copy; 2025 Sakura. Todos os direitos reservados.</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/vitor-paiola-323100175/" target="_blank" aria-label="LinkedIn" class="social-link-linkedin"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/VitorPaiola" target="_blank" aria-label="GitHub" class="social-link-github"><i class="fab fa-github"></i></a>
+            <a href="https://www.youtube.com/@UserXisOficial" target="_blank" aria-label="YouTube" class="social-link-youtube"><i
+                    class="fab fa-youtube"></i></a>
+            <a href="https://x.com/v__souz" target="_blank" aria-label="Twitter" class="social-link-twitter"><i
+                    class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/v__souz/" target="_blank" aria-label="Instagram" class="social-link-insta"><i
+                    class="fab fa-instagram"></i></a>
+            <a href="https://dev.to/vitorpaiola" target="_blank" aria-label="Dev.to" class="social-link-dev"><i class="fab fa-dev"></i></a>
+        </div>
+    </footer>
+
+    <div id="toast-notification" class="toast hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
