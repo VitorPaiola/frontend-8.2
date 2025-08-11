@@ -8,6 +8,8 @@ Este projeto é um site de front-end moderno e elegante, simulando a presença d
 
 Explore a versatilidade do tema com uma prévia da interface nos modos claro e escuro.
 
+> **Acesse a demonstração ao vivo aqui:** [https://sakura-restaurant.netlify.app/](https://sakura-restaurant.netlify.app/)
+
 ![Sakura - Demonstração do tema claro](images/home.png)
 _Visão do site no modo claro, destacando a seção de herói e o cardápio._
 
